@@ -8,7 +8,7 @@ import { diskStorage } from 'multer';
 @Controller('files')
 export class FileController {
   constructor(private readonly fileService: FileService) { }
-  @Post('product')
+  @Post('products')
   @UseInterceptors(FileInterceptor('file', {
     fileFilter,
     storage: diskStorage({
@@ -23,7 +23,7 @@ export class FileController {
     return this.fileService.uploadProductFile(file);
   }
 
-  @Get('product/:fileName')
+  @Get('products/:fileName')
   public getProductFile(
     @Res() res: Response,
     @Param('fileName') fileName: string

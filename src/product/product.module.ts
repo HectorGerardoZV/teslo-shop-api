@@ -5,11 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { ProductImage } from './entities/product-images.entity';
 import { ProductRepository } from './product.repository';
+import { FileModule } from 'src/file/file.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   controllers: [ProductController],
   providers: [ProductService, ProductRepository],
   imports: [
+    ConfigModule,
+    FileModule,
     TypeOrmModule.forFeature([
       Product,
       ProductImage

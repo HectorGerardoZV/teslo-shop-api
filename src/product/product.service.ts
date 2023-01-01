@@ -12,8 +12,8 @@ export class ProductService {
     @Inject(ProductRepository)
     private readonly productRepository: IProductRepository
   ) { }
-  public async create(createProductDto: CreateProductDto): Promise<Product> {
-    return await this.productRepository.createProduct(createProductDto);
+  public async create(images: Express.Multer.File[], createProductDto: CreateProductDto): Promise<Product> {
+    return await this.productRepository.createProduct(images, createProductDto);
   }
 
   public async findAll(paginationDto: PaginationDto): Promise<Product[]> {
@@ -24,8 +24,8 @@ export class ProductService {
     return await this.productRepository.findOneProduct(term);
   }
 
-  public async update(id: string, updateProductDto: UpdateProductDto) {
-    return await this.productRepository.updateProduct(id, updateProductDto);
+  public async update(id: string, images: Express.Multer.File[], updateProductDto: UpdateProductDto) {
+    return await this.productRepository.updateProduct(id, images, updateProductDto);
   }
 
   public async remove(id: string) {
