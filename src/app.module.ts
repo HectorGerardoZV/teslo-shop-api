@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductModule } from './product/product.module';
 import { CommonModule } from './common/common.module';
 import { FileModule } from './file/file.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { FileModule } from './file/file.module';
     }),
     ProductModule,
     CommonModule,
-    FileModule
+    FileModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
