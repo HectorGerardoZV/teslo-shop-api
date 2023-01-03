@@ -9,6 +9,7 @@ import {
     IsNumber,
     IsIn,
 } from 'class-validator'
+import { Type } from 'class-transformer'
 
 export class CreateProductDto {
     @IsString()
@@ -18,6 +19,7 @@ export class CreateProductDto {
 
     @IsNumber()
     @IsPositive()
+    @Type(() => Number)
     price: number;
 
     @IsString()
@@ -31,24 +33,19 @@ export class CreateProductDto {
     @IsInt()
     @IsPositive()
     @IsOptional()
+    @Type(() => Number)
     stock?: number;
 
-    @IsString({ each: true })
-    @IsArray()
-    sizes?: string[];
+    @IsString()
+    @IsOptional()
+    sizes?: string;
 
     @IsString()
     @IsIn(['men', 'women', 'girl', 'boy', 'unisex'])
     @IsOptional()
     gender?: string;
 
-    @IsString({ each: true })
-    @IsArray()
+    @IsString()
     @IsOptional()
-    tags?: string[];
-
-    @IsString({ each: true })
-    @IsArray()
-    @IsOptional()
-    images?: string[];
+    tags?: string;
 }
